@@ -72,10 +72,13 @@ user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
                 tabPanel("Farmer data",
                 sidebarLayout(
                   sidebarPanel(
-                    
+                    radioButtons("loc", "What is your location?", 
+                                 choices = c("On-site", "Off-site"),
+                                 selected = "Off-site")
                   ),
                   mainPanel(
-                    DT::dataTableOutput("iris")
+                    DT::dataTableOutput("iris"),
+                    textOutput("location")
                   )
                 ))
 )) # fluidpage
@@ -100,6 +103,10 @@ server <- function(input, output){
   output$iris <- DT::renderDataTable({
     iris
   })
+  
+  output$location <- {(
+    renderText(input$loc)
+  )}
 } # server
 
 # create shiny object
