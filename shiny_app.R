@@ -16,8 +16,10 @@ user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
                              textInput("txt1", "Given Name(s):", ""),
                              textInput("txt2", "Surname:", ""),
                              textInput("txt3", "Age:", ""),
-                             selectInput("slctInput", "Select country you live in",
-                                         choices = c("Kenya", "Uganda", "Tanzania"))
+                             selectInput("slctInput", "Select country you live 
+                                         in",
+                                         choices = c("Kenya", "Uganda", 
+                                                     "Tanzania"))
                              
                            ), # sidebarPanel 1
                            mainPanel(
@@ -29,7 +31,7 @@ user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
                            ) # mainPanel
                            
                   ), # navbar 1 tabpanel 1
-                  tabPanel("Coffee Yield Trend",
+                  tabPanel("Tea Yield Trends",
                            sidebarPanel(
                              sliderInput("obs",
                                          "Coffee Yield (Kgs):",
@@ -43,28 +45,40 @@ user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
                              h3("In Kgs"),
                            )
                            ),
-                  tabPanel("Iris data by Species"),
+                  tabPanel("Tea data histogram",
                   sidebarLayout(
                     sidebarPanel(
-                      selectInput("var", "1. Select the variable from the iris datset",
+                      selectInput("var", "1. Select the variable from the iris 
+                                  datset",
                                   choices = c("Sepal.Length" = 1,
                                               "Sepal.Width" = 2,
                                               "Petal.Length" = 3,
                                               "Petal.Width" = 4),
                                   selected = 1),
                       br(),
-                      sliderInput("bins", "2. Select the number of BINs for histogram",
+                      sliderInput("bins", "2. Select the number of BINs for 
+                                  histogram",
                                   min = 5, max = 25, value = 15),
                       br(),
                       radioButtons("color", "3. Select the color of histogram",
-                                   choices = c("Purple", "Cyan", "Magenta"), selected = "Purple")
+                                   choices = c("Purple", "Cyan", "Magenta"), 
+                                   selected = "Purple")
                     ),
                     mainPanel(
                       plotOutput("myhist")
                     )
                   )
-                ) # navbar page
-) # fluidpage
+                ),# navbar page
+                tabPanel("Farmer data",
+                sidebarLayout(
+                  sidebarPanel(
+                    
+                  ),
+                  mainPanel(
+                    DT::dataTableOutput("iris")
+                  )
+                ))
+)) # fluidpage
 
 
 # Define server function
@@ -82,6 +96,9 @@ server <- function(input, output){
     colm <- as.numeric(input$var)
     hist(iris[,colm], breaks = seq(0, max(iris[, colm], l = input$bins + 1)),
                                     col = input$color)
+  })
+  output$iris <- DT::renderDataTable({
+    iris
   })
 } # server
 
