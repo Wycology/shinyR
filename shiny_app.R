@@ -74,12 +74,45 @@ user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
                   sidebarPanel(
                     radioButtons("loc", "What is your location?", 
                                  choices = c("On-site", "Off-site"),
-                                 selected = "Off-site")
+                                 selected = "Off-site"),
+                    sliderInput("ndaysspent", "No. of days spent", 0, 100, 
+                                value = c(10, 20),
+                                step = 5),
+                    selectInput("dept", "What is your department?",
+                                choices = c("Marketing", "Finance", "Sales", "IT"),
+                                multiple = TRUE)
                   ),
                   mainPanel(
                     DT::dataTableOutput("iris"),
-                    textOutput("location")
+                    textOutput("location"),
+                    textOutput("no_of_days_spent"),
+                    textOutput("department")
                   )
+                )),
+                tabPanel(title = "Shiny Tabset Example",
+                sidebarLayout(
+                  sidebarPanel(
+                    selectInput("ngear", "Select the gear number", 
+                                c("Cylinders" = "cyl", "Transmission" = "am",
+                                  "Gears" = "gear"))
+                  ),
+                  mainPanel(
+                    tabsetPanel(type = "tab",
+                                tabPanel("Help", 
+                                         tags$img(src = "shiny.png"),
+                                         HTML('<iframe width="560" height="315" 
+                                              src="https://www.youtube.com/embed/HVa42mJYppE" 
+                                              frameborder="0" allow="accelerometer; 
+                                              autoplay; clipboard-write; 
+                                              encrypted-media; gyroscope; 
+                                              picture-in-picture" 
+                                              allowfullscreen></iframe>')),
+                                tabPanel("Data", tableOutput("mtcars"), downloadButton("downloadData", "Download Data")),
+                                tabPanel("Summary", verbatimTextOutput("summ")),
+                                tabPanel("Plot", plotOutput("plot"), downloadButton("downloadPlot", "Download Plot"))
+                                )
+                    )
+                  
                 ))
 )) # fluidpage
 
@@ -107,6 +140,49 @@ server <- function(input, output){
   output$location <- {(
     renderText(input$loc)
   )}
+  
+  output$no_of_days_spent <- {(
+   renderText(input$ndaysspent)
+  )}
+  
+  output$department <- {(
+    renderText(input$dept)
+  )}
+  
+  mtreact <- reactive({
+    
+    mtcars[,c("mpg", input$ngear)]
+  })
+  
+  output$mtcars <- renderTable({
+    mtreact()
+  })
+  output$summ <- renderPrint({
+    summary(mtreact())
+  })
+  
+  output$plot <- renderPlot({
+    with(mtreact(), boxplot(mpg ~ mtreact()[, 2]))
+  })
+  
+  output$downloadData <- downloadHandler(
+    filename = function(){
+      paste("mtcars", "csv", sep = ".")
+    },
+    content = function(file){
+      write.csv(mtreact(), file)
+    }
+  )
+  output$downloadPlot <- downloadHandler(
+    filename = function(){
+      paste("mtcars-plot", "png", sep = ".")
+    },
+    content = function(file){
+     png(file)
+      with(mtreact(), boxplot(mpg ~ mtreact()[, 2]))
+      dev.off()
+    }
+  )
 } # server
 
 # create shiny object
