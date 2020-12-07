@@ -10,7 +10,7 @@ data(mtcars)
 
 # Define user interface
 
-user_interface <- fluidPage(titlePanel("Kenyan Farmer Details"),
+ui <- fluidPage(titlePanel("Kenyan Farmer Details"),
                             theme = shinytheme("united"),
                 navbarPage(
                   "KALRO - TRI Records",
@@ -191,6 +191,6 @@ server <- function(input, output){
 } # server
 
 # create shiny object
-shinyApp(ui = user_interface, server = server)
+shinyApp(ui = ui, server = server)
 
 
