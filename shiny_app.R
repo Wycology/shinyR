@@ -1,11 +1,16 @@
-# define user interface
-data(iris)
-
+# Load the necessary packages
 
 library(shiny)
 library(shinythemes)
 
-user_interface <- fluidPage(titlePanel("Kenyan Farmer"),
+# Load the necessary data
+
+data(iris)
+data(mtcars)
+
+# Define user interface
+
+user_interface <- fluidPage(titlePanel("Kenyan Farmer Details"),
                             theme = shinytheme("united"),
                 navbarPage(
                   "KALRO - TRI Records",
