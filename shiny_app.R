@@ -10,7 +10,7 @@ data(mtcars)
 
 # Define user interface
 
-ui <- fluidPage(titlePanel("Kenyan Tea Farmer Details"),
+ui <- fluidPage(titlePanel("Kenyan Tea Farmers Details"),
                             theme = shinytheme("united"),
                 navbarPage(
                   "KALRO - TRI Records",
@@ -24,7 +24,7 @@ ui <- fluidPage(titlePanel("Kenyan Tea Farmer Details"),
                              selectInput("slctInput", "Select country you live 
                                          in",
                                          choices = c("Kenya", "Uganda", 
-                                                     "Tanzania"))
+                                                     "Tanzania", "Other"))
                              
                            ), # sidebarPanel 1
                            mainPanel(
