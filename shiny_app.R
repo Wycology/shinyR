@@ -10,10 +10,10 @@ data(mtcars)
 
 # Define user interface
 
-ui <- fluidPage(titlePanel("Kenyan Tea Farmers Details"),
+ui <- fluidPage(titlePanel("Kenyan Tea Farmers' Details"),
                             theme = shinytheme("united"),
                 navbarPage(
-                  "KALRO - TRI Records",
+                  "KALRO - TRI Information",
                   tabPanel("Farmer Details",
                            sidebarPanel(
                              tags$h3("Name:"),
