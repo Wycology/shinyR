@@ -1,19 +1,19 @@
-# Load the necessary packages
+# Load the necessary packages for building the shinyApp
 
-library(shiny)
-library(shinythemes)
+library(shiny) # This is the main package for building the App.
+library(shinythemes) # For changing the themes of the web application created.
 
 # Load the necessary data
 
-data(iris)
-data(mtcars)
+data(iris) # iris flower data in the base R package
+data(mtcars) # cars data which also comes with the base R package
 
-# Define user interface
+# Define user interface. This is what the users will be interacting with.
 
 ui <- fluidPage(titlePanel("About Kenyan Tea Farmers"),
                             theme = shinytheme("united"),
                 navbarPage(
-                  "KALRO - TRI Information",
+                  "KALRO - TRI Information Dashboard",
                   tabPanel("Farmer Details",
                            sidebarPanel(
                              tags$h3("Name:"),
