@@ -3,28 +3,27 @@
 library(shiny) # This is the main package for building the App.
 library(shinythemes) # For changing the themes of the web application created.
 
-# Load the necessary data
+# Load the necessary data for building the application.
 
 data(iris) # iris flower data in the base R package
 data(mtcars) # cars data which also comes with the base R package
 
 # Define user interface. This is what the users will be interacting with.
 
-ui <- fluidPage(titlePanel("About Kenyan Tea Farmers"),
-                            theme = shinytheme("united"),
-                navbarPage(
-                  "KALRO - TRI Information Dashboard",
-                  tabPanel("Farmer Details",
-                           sidebarPanel(
-                             tags$h3("Name:"),
-                             textInput("txt4", "Registration Number:"),
-                             textInput("txt1", "Given Name(s):", ""),
-                             textInput("txt2", "Surname:", ""),
-                             textInput("txt3", "Age:", ""),
-                             selectInput("slctInput", "Select country you live 
-                                         in",
-                                         choices = c("Kenya", "Uganda", 
-                                                     "Tanzania", "Other"))
+ui <- fluidPage(
+  titlePanel("About Kenyan Tea Farmers"),
+  theme = shinytheme("united"),
+  navbarPage("KALRO - TRI Information Dashboard",
+             tabPanel("Farmer Details",
+                      sidebarPanel(
+                        tags$h3("Name:"),
+                        textInput("txt4", "Registration Number:"),
+                        textInput("txt1", "Given Name(s):", ""),
+                        textInput("txt2", "Surname:", ""),
+                        textInput("txt3", "Age:", ""),
+                        selectInput("slctInput", "Select your country",
+                                    choices = c("Kenya", "Uganda", 
+                                                "Tanzania", "Other"))
                              
                            ), # sidebarPanel 1
                            mainPanel(
