@@ -17,7 +17,7 @@ ui <- fluidPage(
              tabPanel("Farmer Details",
                       sidebarPanel(
                         tags$h3("Name:"),
-                        textInput("txt4", "Registration Number:"),
+                        textInput("txt4", "Farmer Registration Number:"),
                         textInput("txt1", "Given Name(s):", ""),
                         textInput("txt2", "Surname:", ""),
                         textInput("txt3", "Age:", ""),
