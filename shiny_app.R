@@ -12,15 +12,15 @@ data(mtcars) # cars data which also comes with the base R package
 
 ui <- fluidPage(
   titlePanel("About Kenyan Tea Farmers"),
-  theme = shinytheme("united"),
+  theme = shinytheme("united"), # "cosmo", "cyborg", "journal", "paper", etc
   navbarPage("KALRO - TRI Information Dashboard",
-             tabPanel("Farmer Details",
+             tabPanel("Farmer's Details",
                       sidebarPanel(
-                        tags$h3("Name:"),
+                        tags$h3("About the farmer:"),
                         textInput("txt4", "Farmer Registration Number:"),
                         textInput("txt1", "Given Name(s):", ""),
-                        textInput("txt2", "Surname:", ""),
-                        textInput("txt3", "Age:", ""),
+                        textInput("txt2", "Surname(s):", ""),
+                        numericInput("txt3", "Age:", ""),
                         selectInput("slctInput", "Select your country",
                                     choices = c("Kenya", "Uganda", 
                                                 "Tanzania", "Other"))
