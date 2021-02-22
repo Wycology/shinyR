@@ -16,8 +16,8 @@ ui <- fluidPage(
   navbarPage("KALRO - TRI Information ShinyApp",
              tabPanel("Farmers' Details",
                       sidebarPanel(
-                        tags$h3("About the farmer:"),
-                        textInput("txt4", "Farmer Registration Number:"),
+                        tags$h3("About a farmer:"),
+                        textInput("txt4", "Registration Number:"),
                         textInput("txt1", "Given Name(s):", ""),
                         textInput("txt2", "Surname(s):", ""),
                         numericInput("txt3", "Age:", ""),
