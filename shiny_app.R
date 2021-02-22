@@ -13,7 +13,7 @@ data(mtcars) # cars data which also comes with the base R package
 ui <- fluidPage(
   titlePanel("Kenyan Tea Farmers"),
   theme = shinytheme("united"), # "cosmo", "cyborg", "journal", "paper", etc
-  navbarPage("KALRO - TRI Information Dashboard",
+  navbarPage("KALRO - TRI Information ShinyApp",
              tabPanel("Farmer's Details",
                       sidebarPanel(
                         tags$h3("About the farmer:"),
