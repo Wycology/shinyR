@@ -49,7 +49,7 @@ ui <- fluidPage(
                              h3("In Kgs"),
                            )
                            ),
-                  tabPanel("Tea data histogram",
+                  tabPanel("Tea histogram",
                   sidebarLayout(
                     sidebarPanel(
                       selectInput("var", "1. Select the variable from the iris 
