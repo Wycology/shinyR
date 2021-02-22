@@ -8,7 +8,7 @@ library(shinythemes) # For changing the themes of the web application created.
 data(iris) # iris flower data in the base R package
 data(mtcars) # cars data which also comes with the base R package
 
-# Define user interface. This is what the users will be interacting with.
+# Define user interface. This is page the users will be interacting with.
 
 ui <- fluidPage(
   titlePanel("About Kenyan Tea Farmers"),
