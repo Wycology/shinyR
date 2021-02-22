@@ -11,7 +11,7 @@ data(mtcars) # cars data which also comes with the base R package
 # Define user interface. This is page the users will be interacting with.
 
 ui <- fluidPage(
-  titlePanel("About Kenyan Tea Farmers"),
+  titlePanel("Kenyan Tea Farmers"),
   theme = shinytheme("united"), # "cosmo", "cyborg", "journal", "paper", etc
   navbarPage("KALRO - TRI Information Dashboard",
              tabPanel("Farmer's Details",
