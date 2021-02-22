@@ -1,6 +1,6 @@
 # Load the necessary packages for building the shinyApp
 
-library(shiny) # This is the main package that builds the App.
+library(shiny) # This is the main package that builds the Shiny App.
 library(shinythemes) # For changing the themes of the web application created.
 
 # Load the necessary data for building the application.
