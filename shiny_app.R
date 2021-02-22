@@ -21,7 +21,7 @@ ui <- fluidPage(
                         textInput("txt1", "Given Name(s):", ""),
                         textInput("txt2", "Surname(s):", ""),
                         numericInput("txt3", "Age:", ""),
-                        selectInput("slctInput", "Select your country",
+                        selectInput("slctInput", "Select your home country",
                                     choices = c("Kenya", "Uganda", 
                                                 "Tanzania", "Other"))
                              
