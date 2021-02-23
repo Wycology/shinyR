@@ -3,7 +3,7 @@
 library(shiny) # This is the main package that builds the Shiny App.
 library(shinythemes) # For changing the themes of the web application created.
 
-# Load the necessary data for building the application.
+# Load the necessary data 
 
 data(iris) # iris flower data
 data(mtcars) # cars data which also comes with the base R package
