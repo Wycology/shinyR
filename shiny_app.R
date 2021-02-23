@@ -6,7 +6,7 @@ library(shinythemes) # For changing the themes of the web application created.
 # Load the necessary data 
 
 data(iris) # iris flower data
-data(mtcars) # cars data which also come with the base R package
+data(mtcars) # cars data 
 
 # Define user interface. 
 
