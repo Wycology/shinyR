@@ -1,4 +1,4 @@
-# Load the necessary packages for building the shinyApp
+# Load the necessary packages for building the shinyApp in R
 
 library(shiny) # The main package that builds the Shiny App.
 library(shinythemes) # For changing the themes of the web application created.
