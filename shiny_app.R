@@ -79,7 +79,7 @@ ui <- fluidPage(
                     radioButtons("loc", "State your location", 
                                  choices = c("On-site", "Off-site"),
                                  selected = "Off-site"),
-                    sliderInput("ndaysspent", "No. of days spent", 0, 100, 
+                    sliderInput("ndaysspent", "Number of days spent", 0, 100, 
                                 value = c(10, 20),
                                 step = 5),
                     selectInput("dept", "What is your department?",
