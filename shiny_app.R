@@ -73,7 +73,7 @@ ui <- fluidPage(
                     )
                   )
                 ),# navbar page
-                tabPanel("Farmer data",
+                tabPanel("Farmer general data",
                 sidebarLayout(
                   sidebarPanel(
                     radioButtons("loc", "State your location", 
