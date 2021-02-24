@@ -1,11 +1,15 @@
+
+
 library(ggplot2)
-library(Cairo)
+library(Cairo)   # For nicer ggplot2 output when deployed on Linux
 library(DT)
 
+# A modified version of mtcars with some columns removed, some columns added,
+# and some columns as factors.
 mtc <- mtcars
 mtc$cyl <- factor(mtc$cyl)
-mtc$am <- factor(mtc$am)
-mtc$vs <- NULL
+mtc$am  <- factor(mtc$am)
+mtc$vs  <- NULL
 mtc$disp <- NULL
 mtc$hp <- NULL
 mtc$qsec <- NULL
@@ -14,9 +18,9 @@ mtc$drat <- NULL
 mtc$carb <- NULL
 
 mtc$date <- Sys.Date() + seq_len(nrow(mtc))
-
 mtc$datetime <- Sys.time() + 60 * seq_len(nrow(mtc))
 
+# Data set with points on a grid
 grid <- data.frame(
   x = rep(1:8, 4),
   xf = factor(rep(1:8, 4)),
@@ -27,159 +31,183 @@ grid <- data.frame(
 
 shinyApp(
   ui = fluidPage(
+    # Some custom CSS
     tags$head(
-      tags$style(HTML('
+      tags$style(HTML("
         /* Smaller font for preformatted text */
         pre, table.table {
-          dont-sie: smaller;
+          font-size: smaller;
         }
-        
+
         body {
           min-height: 2000px;
         }
-        
-        .option_group {
+
+        .option-group {
           border: 1px solid #ccc;
           border-radius: 6px;
           padding: 0px 5px;
           margin: 5px -10px;
           background-color: #f5f5f5;
         }
-        
+
         .option-header {
           color: #79d;
           text-transform: uppercase;
-          margin.bottom: 5px;
+          margin-bottom: 5px;
         }
-        '))
+      "))
     ),
-  fluidRow(
-    column(width = 3,
-      div(class = 'option-group',
-       radioButtons('dataset', 'Data set',
-        choices = c('mtcars', 'diamonds', 'grid'), inline = TRUE),
-       radioButtons('plot_type', 'Plot type',
-        c('base', 'ggplot2'), inline = TRUE),
-       
-       conditionalPanel("input.plot_type === 'base'",
-        selectInput('plot_scaletype', 'Scale type',
-         c('normal' = 'normal',
-           'log' = 'log',
-           'x factor' = 'x_factor',
-           'datetime' = 'datetime'),
-         selectize = FALSE
-       )
+    
+    
+    fluidRow(
+      column(width=3,
+             div(class = "option-group",
+                 radioButtons("dataset", "Data set",
+                              choices = c("mtcars", "diamonds", "grid"), inline = TRUE),
+                 radioButtons("plot_type", "Plot type",
+                              c("base", "ggplot2"), inline = TRUE),
+                 
+                 conditionalPanel("input.plot_type === 'base'",
+                                  selectInput("plot_scaletype", "Scale type",
+                                              c("normal" = "normal",
+                                                "log" = "log",
+                                                "x factor" = "x_factor",
+                                                "datetime" = "datetime"
+                                              ),
+                                              selectize = FALSE
+                                  )
+                 ),
+                 conditionalPanel("input.plot_type === 'ggplot2'",
+                                  selectInput("ggplot_scaletype", "Scale type",
+                                              c("normal" = "normal",
+                                                "reverse (scale_*_reverse())" = "reverse",
+                                                "log10 (scale_*_log10())" = "log10",
+                                                "log2 (scale_*_continuous( trans=log2_trans()))" = "log2",
+                                                "log10 (coord_trans())" = "log10_trans",
+                                                "log2 (coord_trans())" = "log2_trans",
+                                                "coord_cartesian()" = "coord_cartesian",
+                                                "coord_flip()" = "coord_flip",
+                                                "coord_fixed()" = "coord_fixed",
+                                                "coord_polar() (doesn't work)" = "coord_polar",
+                                                "x factor" = "x_factor",
+                                                "date and time" = "datetime"
+                                              ),
+                                              selectize = FALSE
+                                  ),
+                                  selectInput("ggplot_facet", "Facet",
+                                              c("none" = "none",
+                                                "wrap" = "wrap",
+                                                "grid x" = "grid_x",
+                                                "grid y" = "grid_y",
+                                                "grid xy" = "grid_xy",
+                                                "grid xy free" = "grid_xy_free"
+                                              ),
+                                              selectize = FALSE
+                                  )
+                 )
+             )
+      ),
+      column(width = 3,
+             div(class = "option-group",
+                 div(class = "option-header", "Double-click"),
+                 sliderInput("dblclick_delay", "Delay", min=100, max=1000, value=400,
+                             step=100)
+             ),
+             div(class = "option-group",
+                 div(class = "option-header", "Hover"),
+                 radioButtons("hover_policy", "Input rate policy",
+                              c("debounce", "throttle"), inline = TRUE),
+                 sliderInput("hover_delay", "Delay", min=100, max=1000, value=200,
+                             step=100),
+                 checkboxInput("hover_null_outside", "NULL when outside", value=TRUE)
+             )
+      ),
+      column(width = 3,
+             div(class = "option-group",
+                 div(class = "option-header", "Brush"),
+                 radioButtons("brush_dir", "Direction(s)",
+                              c("xy", "x", "y"), inline = TRUE),
+                 radioButtons("brush_policy", "Input rate policy",
+                              c("debounce", "throttle"), inline = TRUE),
+                 sliderInput("brush_delay", "Delay", min=100, max=1000, value=200,
+                             step=100),
+                 checkboxInput("brush_reset", "Reset on new image")
+             )
+      ),
+      column(width = 3,
+             verbatimTextOutput("plot_dblclickinfo")
+      )
     ),
-       conditionalPanel("input.plot_type === 'ggplot2'",
-        selectInput('ggplot_scaletype', 'Scale type',
-         c('normal' = 'normal',
-           'reverse (scale_*_reverse())' = 'reverse',
-           'log10 (scale_*_log10())' = 'log10',
-           'log2 (scale_*_continuous( trans=log2_trans()))' = 'log2',
-           'log10 (coord_trans())' = 'log10_trans',
-           'log2 (coord_trans())' = 'log2_trans',
-           'coord_cartesian()' = 'coord_cartesian',
-           'coord_flip()' = 'coord_flip',
-           'coord_fixed()' = 'coord_fixed',
-           "coord_polar() (doesn't work)" = 'coord_polar',
-           'x factor' = 'x_factor',
-           'date and time' = 'datetime'
-          ),
-         selectize = FALSE,
-        ),
-        selectInput('ggplot_facet', 'Facet',
-          c('none' = 'none',
-            'wrap' = 'wrap',
-            'grid x' = 'grid_x',
-            'grid y' = 'grid_y',
-            'grid xy' = 'grid_xy',
-            'grid xy free' = 'grid_xy_free'
-          ),
-          selectize = FALSE
-        )
+    
+    fluidRow(
+      column(width = 6,
+             uiOutput("plotui")
+      ),
+      column(width = 3,
+             verbatimTextOutput("plot_clickinfo")
+      ),
+      column(width = 3,
+             verbatimTextOutput("plot_hoverinfo")
+      )
+    ),
+    fluidRow(
+      column(width = 9,
+             wellPanel(
+               div(class = "option-group",
+                   div(class = "option-header", "nearPoints() options"),
+                   flowLayout(
+                     sliderInput("max_distance", "Max distance (pixels)",
+                                 min=1, max=20, value=5, step=1),
+                     sliderInput("max_points", "Max number of rows to select",
+                                 min=1, max=100, value=100, step=1)
+                   )
+               ),
+               h4("Points selected by clicking, with nearPoints():"),
+               DT::dataTableOutput("plot_clicked_points")
+             ),
+             wellPanel(width = 9,
+                       h4("Points selected by brushing, with brushedPoints():"),
+                       DT::dataTableOutput("plot_brushed_points")
+             )
+      ),
+      column(width = 3,
+             verbatimTextOutput("plot_brushinfo")
       )
     )
-  ),
-  column(width = 3,
-    div(class = 'option_group',
-      div(class = 'option-header', 'Double-click'),
-      sliderInput('dblclick_delay', 'Delay', min = 100, max = 1000, value = 400,
-        step = 100)
-    ),
-    div(class = 'option-group',
-      div(class = 'option-header', 'Hover'),
-      radioButtons('hover_policy', 'Input rate policy',
-        c('debounce', 'throttle'), inline = TRUE),
-      sliderInput('hover_delay', 'Delay', min = 100, max = 1000, value = 200,
-        step = 100),
-      checkboxInput('hover_null-outside', 'NULL when outside', value = TRUE)
-      )
-    ),
-  column(width = 3,
-    div(class = 'option-group',
-      div(class = 'option-header', 'Brush'),
-      radioButtons('brush_dir', 'Direction(s)',
-        c('xy', 'x', 'y'), inline = TRUE),
-      radioButtons('brush_policy', 'Input rate policy',
-        c('debounce', 'throttle'), inline = TRUE),
-      sliderInput('brush_delay', 'Delay', min = 100, max = 1000, value = 200,
-        step = 100),
-      checkboxInput('brush_reset', 'Reset on new image')
-      )
-    ),
-    column(width = 3,
-     verbatimTextOutput('plot_dblclickinfo')
-    )
-  ),
-  
-  fluidRow(
-    column(width = 6,
-      uiOutput('plotui')
-   ),
-   column(width = 3,
-    verbatimTextOutput('plot_clickinfo')
-    )
-  ),
-  fluidRow(
-    column(width = 9,
-     wellPanel(
-       div(class = 'option-group',
-        div(class = 'option-header', 'nearPoints() options'),
-        flowLayout(
-          sliderInput('max_distance', 'Max distance (pixels)',
-            min = 1, max = 100, value = 100, step = 1)
-        )
-       ),
-      h4('Points selected by clicking, with nearPoints():'),
-      DT::dataTableOutput('plot_clicked_points')
-     )
-    )
+    
   ),
   server = function(input, output, session) {
+    
+    # Currently selected dataset
     curdata <- reactive({
       switch(input$dataset, mtcars = mtc, diamonds = diamonds, grid = grid)
     })
+    
+    # Name of the x, y, and faceting variables
     xvar <- reactive({
-      if((input$plot_type == 'base'  && input$plot_scaletype == 'x_factor') ||
-         (input$plot_type == 'ggplot2' && input$ggplot_scaletype == 'x_factor'))
+      if ((input$plot_type == "base"    && input$plot_scaletype   == "x_factor") ||
+          (input$plot_type == "ggplot2" && input$ggplot_scaletype == "x_factor"))
       {
-        switch(input$dataset, mtcars = 'cyl', diamonds = 'cut', grid = 'xf')
-      } else if ((input$plot_type == 'base'  && input$plot_scaletype == 'datetime') ||
-                 (input$plot_type == 'ggplot2' && input$ggplot_scaletype == 'datetime')) {
-        'datetime'
+        switch(input$dataset, mtcars = "cyl", diamonds = "cut", grid = "xf")
+        
+      } else if ((input$plot_type == "base"    && input$plot_scaletype   == "datetime") ||
+                 (input$plot_type == "ggplot2" && input$ggplot_scaletype == "datetime")) {
+        "datetime"
       } else {
-        switch(input$dataset, mtcars = 'wt', diamonds = 'carat', grid = 'x')
+        switch(input$dataset, mtcars = "wt", diamonds = "carat", grid = "x")
       }
     })
     
     yvar <- reactive({
-      if ((input$plot_type == 'base'  && input$plot_scaletype == 'datetime') ||
-          (input$plot_type == 'ggplot2' && input$ggplot_scaletype == 'datetime')) {
-        'date'
+      if ((input$plot_type == "base"    && input$plot_scaletype   == "datetime") ||
+          (input$plot_type == "ggplot2" && input$ggplot_scaletype == "datetime")) {
+        "date"
       } else {
-        switch(input$dataset, mtcars = 'mpg', diamonds = 'price', grid = 'y')
+        switch(input$dataset, mtcars = "mpg", diamonds = "price", grid = "y")
       }
     })
+    
     facetvar1 <- reactive({
       if (input$plot_type != "ggplot2") return(NULL)
       if (input$ggplot_facet == "none") return(NULL)
@@ -338,14 +366,10 @@ shinyApp(
       else if (input$plot_type == "ggplot2")
         res <- brushedPoints(dat, input$plot_brush)
       
-      datatable(res)  
-  })
+      datatable(res)
+    })
   }
 )
-
-
-
-
 
 
 
