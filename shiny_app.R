@@ -93,7 +93,7 @@ ui <- fluidPage(
                     textOutput("department")
                   )
                 )),
-                tabPanel(title = "Shiny Tabset Example",
+                tabPanel(title = "Shiny Tabset",
                 sidebarLayout(
                   sidebarPanel(
                     selectInput("ngear", "Select gear", 
