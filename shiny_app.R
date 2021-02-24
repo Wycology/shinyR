@@ -76,7 +76,7 @@ ui <- fluidPage(
                 tabPanel("Farmer data",
                 sidebarLayout(
                   sidebarPanel(
-                    radioButtons("loc", "What is your location?", 
+                    radioButtons("loc", "State your location", 
                                  choices = c("On-site", "Off-site"),
                                  selected = "Off-site"),
                     sliderInput("ndaysspent", "No. of days spent", 0, 100, 
