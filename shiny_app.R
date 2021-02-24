@@ -96,7 +96,7 @@ ui <- fluidPage(
                 tabPanel(title = "Shiny Tabset Example",
                 sidebarLayout(
                   sidebarPanel(
-                    selectInput("ngear", "Select the gear", 
+                    selectInput("ngear", "Select gear", 
                                 c("Cylinders" = "cyl", "Transmission" = "am",
                                   "Gears" = "gear"))
                   ),
