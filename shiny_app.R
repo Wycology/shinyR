@@ -82,7 +82,7 @@ ui <- fluidPage(
                     sliderInput("ndaysspent", "Number of days spent", 0, 100, 
                                 value = c(10, 20),
                                 step = 5),
-                    selectInput("dept", "What is your department?",
+                    selectInput("dept", "State your department",
                                 choices = c("Marketing", "Finance", "Sales", "IT"),
                                 multiple = TRUE)
                   ),
