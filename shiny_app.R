@@ -9,7 +9,7 @@
 library(shiny) # The main package that builds the Shiny Application.
 library(shinythemes) # For changing the themes.
 
-# Load the necessary data-sets 
+# Load the necessary data-sets for the project 
 
 data(iris) # iris flower data
 data(mtcars) # cars data 
