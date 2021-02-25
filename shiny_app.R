@@ -12,7 +12,7 @@ library(shinythemes) # For changing the themes.
 # Load the necessary data-sets for the project 
 
 data(iris) # iris flower data which is having five variables and 150 observations
-data(mtcars) # cars data 
+data(mtcars) # cars data with 32 observations and 11 variables
 
 # Define user interface, the so called ui. 
 
