@@ -1,4 +1,6 @@
-
+#################################
+# TASK: PLaying with shinyApp
+# Author: Wyclife Agumba Oluoch
 
 # Load the packages for building the shinyApp in R
 
