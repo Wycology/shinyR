@@ -121,7 +121,7 @@ ui <- fluidPage(
 )) # fluidpage
 
 
-# Defining server function
+# Defining server function, just server
 
 server <- function(input, output){
   
