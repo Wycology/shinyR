@@ -8,7 +8,7 @@ library(shinythemes) # For changing themes.
 data(iris) # iris flower data having five variables and 150 observations
 data(mtcars) # cars data with 32 observations and 11 variables
 
-# Define user interface, the so called ui. 
+# Defin user interface, the so called ui. 
 
 ui <- fluidPage(
   titlePanel("Kenyan Tea Farmers"),
