@@ -14,7 +14,7 @@ ui <- fluidPage(
   titlePanel("Kenyan Tea Farmers Details"),
   theme = shinytheme("cosmo"), # "united", "cyborg", "journal", "paper", etc
   navbarPage("TRF Inf ShinyApp",
-             tabPanel("Farmers' Details",
+             tabPanel("Farmers' Information",
                       sidebarPanel(
                         tags$h3("About a farmer:"),
                         textInput("txt4", "Registration Number:"),
