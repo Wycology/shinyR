@@ -11,7 +11,7 @@ data(mtcars) # cars data with 32 observations and 11 variables
 # Defining user interface, the so called ui. 
 
 ui <- fluidPage(
-  titlePanel("Kenyan Tea Farmers"),
+  titlePanel("Kenyan Tea Farmers Details"),
   theme = shinytheme("united"), # "cosmo", "cyborg", "journal", "paper", etc
   navbarPage("TRF Inf ShinyApp",
              tabPanel("Farmers' Details",
