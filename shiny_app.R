@@ -16,7 +16,7 @@ ui <- fluidPage(
   navbarPage("TRF Information ShinyApp",
              tabPanel("Farmers' Information",
                       sidebarPanel(
-                        tags$h3("About a farmer:"),
+                        tags$h3("About the farmer:"),
                         textInput("txt4", "Registration Number:"),
                         textInput("txt1", "Given Name(s):", ""),
                         textInput("txt2", "Surname(s):", ""),
