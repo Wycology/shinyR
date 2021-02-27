@@ -27,7 +27,7 @@ ui <- fluidPage(
                              
                            ), # sidebarPanel 1
                            mainPanel(
-                             h1("Contact Details"),
+                             h1("Contact Information"),
                              h4("Full Names"),
                              verbatimTextOutput("txtout"),
                              textOutput("countryOutput"),
