@@ -187,7 +187,7 @@ server <- function(input, output){
       dev.off()
     }
   )
-} # server
+} # server done
 
 # create shiny object using the shinyApp function
 shinyApp(ui = ui, server = server)
