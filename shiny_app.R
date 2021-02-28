@@ -3,7 +3,7 @@
 library(shiny) # Main package that builds the Shiny Application.
 library(shinythemes) # For changing the themes.
 
-# Load the necessary data-sets for the project 
+# Load two necessary data-sets for the project 
 
 data(iris) # iris data having five variables and 150 observations
 data(mtcars) # cars data with 32 observations and 11 variables
