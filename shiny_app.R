@@ -6,7 +6,7 @@ library(shinythemes) # For changing the themes.
 # Load two data-sets for the app building 
 
 data(iris) # iris data having five variables and 150 observations
-data(mtcars) # cars data with 32 observations and 11 variables
+data(mtcars) # mtcars data with 32 observations and 11 variables
 
 # Defining user interface, the so called ui. 
 
