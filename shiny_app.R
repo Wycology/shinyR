@@ -118,7 +118,7 @@ ui <- fluidPage(
                     )
                   
                 ))
-)) # fluidpage ends here and server begins
+)) # fluidpage ends here and server kicks off
 
 
 # Defining server function, just the server, simple
