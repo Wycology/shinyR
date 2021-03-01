@@ -121,7 +121,7 @@ ui <- fluidPage(
 )) # fluidpage ends here and server kicks off
 
 
-# Defining server functions, just the server.
+# Defining server functions for the ui, just the server.
 
 server <- function(input, output){
   
