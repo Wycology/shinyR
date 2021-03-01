@@ -25,7 +25,7 @@ ui <- fluidPage(
                                     choices = c("Kenya", "Uganda", 
                                                 "Tanzania", "Other"))
                              
-                           ), # sidebarPanel 1
+                           ), # sidebarPanel 
                            mainPanel(
                              h1("Contact Information"),
                              h4("Full Names"),
