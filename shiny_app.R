@@ -1,4 +1,5 @@
-# shinyApp in R, 
+# shinyApp in R, last edited 2nd Mar 2021 by Oluoch Agumba
+
 # Load the packages for building shinyApp in R
 #----------------------------------------------------
 library(shiny) # Main package that builds the Shiny Application.
