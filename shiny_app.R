@@ -189,5 +189,5 @@ server <- function(input, output){
   )
 } # server setting done
 
-# create shiny object using the shinyApp function. Done for the day
+# creat shiny object using the shinyApp function. Done for the day
 shinyApp(ui = ui, server = server)
