@@ -1,3 +1,4 @@
+# shinyApp in R, 
 # Load the packages for building shinyApp in R
 #----------------------------------------------------
 library(shiny) # Main package that builds the Shiny Application.
