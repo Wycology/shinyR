@@ -14,7 +14,7 @@ data(mtcars) # mtcars data with 32 observations and 11 variables
 
 ui <- fluidPage(
   titlePanel("Kenyan Tea Farmers Details"),
-  theme = shinytheme("journal"), # "united", "cosmo", "journal", "paper", etc
+  theme = shinytheme("journal"), # "united", "cosmo", "cyborg", "paper", etc
   navbarPage("TRF Information ShinyApp",
              tabPanel("Farmers' Information",
                       sidebarPanel(
