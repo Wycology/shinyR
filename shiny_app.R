@@ -1,6 +1,6 @@
 # shinyApp in R, last edited 2nd Mar 2021 by Oluoch Agumba
 
-# Load the packages for
+# Load the packages for building 
 #----------------------------------------------------
 library(shiny) # Main package that builds the Shiny Application.
 library(shinythemes) # For changing the themes.
