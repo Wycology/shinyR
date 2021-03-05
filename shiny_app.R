@@ -4,6 +4,7 @@
 #----------------------------------------------------
 library(shiny) # Main package that builds the Shiny Application.
 library(shinythemes) # For changing the themes.
+library(tidyverse)
 
 # Loading two data-sets for the app building 
 
