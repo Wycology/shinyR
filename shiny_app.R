@@ -126,7 +126,7 @@ ui <- fluidPage(
 
 # Defining server functions for the ui.
 
-server <- function(input, output){
+serveri <- function(input, output){
   
   output$txtout <- renderText({
     paste( input$txt1, input$txt2, input$txt3, input$txt4, sep = " ")
@@ -193,4 +193,4 @@ server <- function(input, output){
 } # server setting done
 
 # creating shiny object using the shinyApp function. Done for the day
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = serveri)
