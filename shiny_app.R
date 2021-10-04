@@ -4,7 +4,7 @@
 
 # Load the packages for building the app
 #----------------------------------------------------
-library(shiny) # Main package t
+library(shiny) # Main packa
 library(shinythemes) # For changing the themes.
 library(tidyverse)
 
