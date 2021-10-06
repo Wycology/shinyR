@@ -5,7 +5,7 @@
 # Load the packages for building the app
 #----------------------------------------------------
 library(shiny)
-library(shinythemes) # For cha
+library(shinythemes) 
 library(tidyverse)
 
 # Loading two data-sets for the app building 
