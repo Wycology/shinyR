@@ -8,8 +8,6 @@ library(shiny)
 library(shinythemes) 
 library(tidyverse)
 
-# Loading
-
 data(iris) # iris data having five variables and 150 observations
 data(mtcars) # mtcars data with 32 observations and 11 variables
 
