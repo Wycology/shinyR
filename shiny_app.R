@@ -35,7 +35,7 @@ ui <- fluidPage(
                              verbatimTextOutput("txtout"),
                              textOutput("countryOutput"),
                              
-                           ) # mainPanel definiti
+                           ) # mainPanel defini
                            
                   ), # navigation bar 1 tabpa
                   tabPanel("Tea Yield Trend",
