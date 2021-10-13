@@ -37,7 +37,7 @@ ui <- fluidPage(
                              
                            ) # mainPanel defini
                            
-                  ), # navig
+                  ),
                   tabPanel("Tea Yield Trend",
                            sidebarPanel(
                              sliderInput("obs",
