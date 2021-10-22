@@ -8,7 +8,7 @@ library(shiny)
 library(shinythemes) 
 library(tidyverse)
 
-data(iris) # iris data having five variables and 150 observations
+data(iris) # iris data having five variables and 150 observati
 data(mtcars) # mtcars data with 32 observations and 11 variables
 
 # Defining user interface, the so called ui. 
