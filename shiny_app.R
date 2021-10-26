@@ -1,6 +1,6 @@
 # shinyApp in R, Created on 2nd Mar 2021 by Oluoch Agumba
 
-# shinyApp in R, last edited 29th Sept 2021 by Oluoch Agu
+# shinyApp in R, last edited 29th Sept 2021 by Oluoch 
 
 # Load the packages for building the app
 #----------------------------------------------------
