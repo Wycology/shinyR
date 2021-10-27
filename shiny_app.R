@@ -2,7 +2,7 @@
 
 # shinyApp in R, last edited 26th Oct 2021 by the author
 
-# Load the packages for building the ap
+# Load the packages for building the 
 #----------------------------------------------------
 library(shiny)
 library(shinythemes) 
