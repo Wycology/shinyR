@@ -2,7 +2,7 @@
 
 # shinyApp in R, last edited 26th Oct 2021 by the author
 
-# Load the packa
+# Load the p
 #----------------------------------------------------
 library(shiny)
 library(shinythemes) 
