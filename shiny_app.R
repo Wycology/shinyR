@@ -4,7 +4,7 @@
 
 # Load
 #----------------------------------------------------
-pac(shiny)
+pacman::(shiny)
 library(shinythemes) 
 library(tidyverse)
 
