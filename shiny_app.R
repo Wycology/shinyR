@@ -4,8 +4,7 @@
 
 # Load
 #----------------------------------------------------
-pacman::p_load(shiny)
-libshinythemes) 
+pacman::p_load(shiny, shinythemes) 
 library(tidyverse)
 
 data(iris)
