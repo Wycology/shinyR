@@ -4,8 +4,7 @@
 
 # Load
 #----------------------------------------------------
-pacman::p_load(shiny, shinythemes) 
-libtidyverse)
+pacman::p_load(shiny, shinythemes, tidyverse)
 
 data(iris)
 data(mtcars)
