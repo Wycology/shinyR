@@ -4,7 +4,7 @@
 
 # Load
 #----------------------------------------------------
-lib(shiny)
+(shiny)
 library(shinythemes) 
 library(tidyverse)
 
