@@ -133,7 +133,7 @@ shinyApp(
                  checkboxInput("brush_reset", "Reset on new image")
              )
       ),
-      column(width = 3,
+      column(width = 3, # Width of the third column
              verbatimTextOutput("plot_dblclickinfo")
       )
     ),
