@@ -59,7 +59,7 @@ shinyApp(
     
     
     fluidRow(
-      column(width=3, # Width 
+      column(width=3, # Width of 
              div(class = "option-group",
                  radioButtons("dataset", "Data set",
                               choices = c("mtcars", "diamonds", "grid"), inline = TRUE),
