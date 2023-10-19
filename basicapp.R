@@ -1,4 +1,3 @@
-
 library(ggplot2)
 library(Cairo)   # For a nicer ggplot2 output when deployed on Linux
 library(DT)
