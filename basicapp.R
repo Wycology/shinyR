@@ -55,7 +55,6 @@ shinyApp(
       "))
     ),
     
-
     fluidRow(
       column(width=3, # Width of the first column
              div(class = "option-group",
