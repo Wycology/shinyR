@@ -218,7 +218,7 @@ shinyApp(
       switch(input$dataset, mtcars = "am", diamonds = "clarity", grid = "facet2")
     })
     
-  
+
     output$plotui <- renderUI({
       plotOutput("plot", height=300,
                  click = "plot_click",
