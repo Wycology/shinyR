@@ -13,7 +13,7 @@ mtc$gear <- NULL
 mtc$drat <- NULL
 mtc$carb <- NULL
 
-mtc$date <- Sys.Date() + seq_len(nrow(mtc)) # crea
+mtc$date <- Sys.Date() + seq_len(nrow(mtc)) # create
 mtc$datetime <- Sys.time() + 60 * seq_len(nrow(mtc))
 
 # Data set with points on a grid
