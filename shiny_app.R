@@ -1,4 +1,4 @@
-# shinyApp in R, reated on 2nd Mar 2021 by Oluoch Agumba
+# shinyApp in R, created on 2nd Mar 2021 by Oluoch Agumba
 
 # shinyApp in R, last edited 26th Oct 2021 by the author
 
