@@ -16,7 +16,7 @@ mtc$carb <- NULL
 mtc$date <- Sys.Date() + seq_len(nrow(mtc)) # Create a column
 mtc$datetime <- Sys.time() + 60 * seq_len(nrow(mtc))
 
-# Data set with points on a grid
+# Dataset with points on a grid
 grid <- data.frame(
   x = rep(1:8, 4),
   xf = factor(rep(1:8, 4)),
