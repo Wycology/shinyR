@@ -27,7 +27,7 @@ grid <- data.frame(
 
 shinyApp(
   ui = fluidPage(
-    # Some custom CSS c
+    # Some custom CSS co
     tags$head(
       tags$style(HTML("
         /* Smaller font for preformatted text */
