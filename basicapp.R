@@ -106,7 +106,7 @@ shinyApp(
       column(width = 3, # Width of the second column
              div(class = "option-group",
                  div(class = "option-header", "Double-click"),
-                 sliderInput("dblclick_delay", "Delay", min=100, max=1000, value=400,
+                 sliderInput("dblclick_delay", "Delay", min =100, max=1000, value=400,
                              step=100)
              ),
              div(class = "option-group",
