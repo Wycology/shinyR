@@ -9,7 +9,7 @@ pacman::p_load(shiny, shinythemes, tidyverse)
 data(iris)
 data(mtcars)
 
-# Defining the user interface, the si called ui. 
+# Defining the user interface, the sim called ui. 
 
 ui <- fluidPage(
   titlePanel("Kenyan Tea Farmers Details"),
